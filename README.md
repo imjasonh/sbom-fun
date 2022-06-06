@@ -26,16 +26,12 @@ $ crane manifest ghcr.io/imjasonh/sbom-fun/github.com/imjasonh/sbom-fun | jq '.m
 }
 ```
 
-Select a platform and get that image's digest:
+Select a platform and get that image's digest, then get that image's SBOM:
 
 ```
 $ crane digest ghcr.io/imjasonh/sbom-fun/github.com/imjasonh/sbom-fun --platform=linux/arm64
 sha256:18f3efcc2edee3500445ee2b3a968834d1396cbcdd6300e4bd8b01b980c50b67
-```
 
-Then get that image's SBOM:
-
-```
 $ cosign download sbom ghcr.io/imjasonh/sbom-fun/github.com/imjasonh/sbom-fun@sha256:18f3efcc2edee3500445ee2b3a968834d1396cbcdd6300e4bd8b01b980c50b67 | jq -r '.components[].name'
 github.com/BurntSushi/toml
 github.com/google/go-github/v45
@@ -48,11 +44,7 @@ Select a different platform, get a different SBOM:
 ```
 $ crane digest ghcr.io/imjasonh/sbom-fun/github.com/imjasonh/sbom-fun --platform=linux/ppc64le
 sha256:b4c3ee6f0f5093c27f3710a18209e6922f56b3a9e7efef53271f5b5d50b91745
-```
 
-Then get that image's SBOM:
-
-```
 $ cosign download sbom ghcr.io/imjasonh/sbom-fun/github.com/imjasonh/sbom-fun@sha256:b4c3ee6f0f5093c27f3710a18209e6922f56b3a9e7efef53271f5b5d50b91745 | jq -r '.components[].name'
 github.com/BurntSushi/toml
 github.com/google/go-cmp
