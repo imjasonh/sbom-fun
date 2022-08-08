@@ -50,3 +50,4 @@ github.com/BurntSushi/toml
 github.com/google/go-cmp
 ```
 
+There's also a test dependency on https://github.com/stretchr/testify, which shows up in `go.mod` but shouldn't appear in any image's SBOM since it's only a test dependency.
